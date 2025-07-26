@@ -1,25 +1,34 @@
 #include <QWidget>
-#include <QTextEdit>
+#include <QLineEdit>
 #include <QGridLayout>
 #include <QPushButton>
 #include <QList>
 #include <QString>
 #include <QChar>
 #include <QDebug>
-
+#include <QSizePolicy>
+#include <QTimer>
 
 class Calc: public QWidget
 {
-    private:
 
-    QChar simvols[16] = {'1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '*', '0', '/', '(', ')'};
+    Q_OBJECT  
+    private:
+    int SECONDS = 0;
+
+    static QChar simvols[16];
+
+
+    // QString _value;
 
 
     int HEIGHT = 600;
     int WIDTH = 400;
 
+    QTimer* timer;
+
     QWidget* window;
-    QTextEdit* field;
+    QLineEdit* field;
     QGridLayout* grid;
 
     QList<QPushButton*> actions;
@@ -28,7 +37,14 @@ class Calc: public QWidget
     QPushButton* del;
     QPushButton* equal;
 
+    private slots:
+    void on_action(QChar& bttn);
+    // void on_delete();
 
+    
+    void delete_pressed();
+    void on_timeout();
+    void delete_released();
 
     public:
     Calc();

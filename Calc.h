@@ -1,5 +1,4 @@
 #include <QWidget>
-#include <QLineEdit>
 #include <QGridLayout>
 #include <QPushButton>
 #include <QList>
@@ -8,6 +7,7 @@
 #include <QDebug>
 #include <QSizePolicy>
 #include <QTimer>
+#include "MyLineEdit.h"
 
 class Calc: public QWidget
 {
@@ -28,7 +28,7 @@ class Calc: public QWidget
     QTimer* timer;
 
     QWidget* window;
-    QLineEdit* field;
+    MyLineEdit* field;
     QGridLayout* grid;
 
     QList<QPushButton*> actions;

@@ -7,7 +7,9 @@
 #include <QDebug>
 #include <QSizePolicy>
 #include <QTimer>
+#include <stack>
 #include "MyLineEdit.h"
+#include <iostream>
 
 class Calc: public QWidget
 {
@@ -17,6 +19,7 @@ class Calc: public QWidget
     int SECONDS = 0;
 
     static QChar simvols[16];
+    static int table_action[6][8];
 
 
     // QString _value;
@@ -38,14 +41,15 @@ class Calc: public QWidget
     QPushButton* equal;
 
     private slots:
-    void on_action(QChar& bttn);
-    // void on_delete();
-
     
+    void on_action(QChar& bttn);
     void delete_pressed();
     void on_timeout();
     void delete_released();
-
+    QString to_polish();
+    void calculated();
+    int convert(const QChar& vl) const;
+    
     public:
     Calc();
 };
